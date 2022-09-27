@@ -1,0 +1,27 @@
+{
+    "name": "clock-test16",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "pxt-ds3231": "github:hokarimasahiro/pxt-ds3231#d338145403f7cf880625ffdde8712e342126810a",
+        "pxt-clockfont16": "github:hokarimasahiro/pxt-clockfont16#2bfda0ca2998da861a8c3cd0ec37308d5611fdf6"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "5.0.12",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}
