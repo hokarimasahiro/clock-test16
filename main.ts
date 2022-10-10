@@ -8,7 +8,7 @@ function changeBrightness (No: number) {
         brightness = brightness * 2
     }
     brightness = Math.constrain(brightness, 1, 255)
-    watchfont.showSorobanNumber(brightness, 0, 5)
+    clockFont.setBrightness(brightness)
 }
 radio.onReceivedValue(function (name, value) {
     if (name == "v") {
@@ -19,12 +19,10 @@ radio.onReceivedValue(function (name, value) {
 })
 function changeDisplay (displayMode: number) {
     display = displayMode
-    watchfont.showNumber2(displayMode)
 }
 function changeColor (colorNo: number) {
-    if (display == 1) {
+    if (display != 2) {
         clockColor = colorList[colorNo]
-        watchfont.showSorobanNumber(clockColor, 0, 5)
     } else {
         for (let カウンター = 0; カウンター <= 5; カウンター++) {
             if (カウンター >= colorNo - 1) {
@@ -74,12 +72,16 @@ basic.forever(function () {
         ds3231.getClock()
         clockFont.setColor(clockColor)
         clockFont.showClock(ds3231.getClockData(clockData.hour), ds3231.getClockData(clockData.minute), ds3231.getClockData(clockData.second))
-    } else {
+    } else if (display == 2) {
         clockFont.clearColumn(0, 64)
         for (let カウンター = 0; カウンター <= 5; カウンター++) {
             clockFont.setColor(colorList[カウンター])
             clockFont.displayNumber(Math.constrain(カウンター * 11, 0, 54), limitList[カウンター], 10)
         }
+        clockFont.show()
+    } else {
+        clockFont.setColor(clockColor)
+        clockFont.displayNumber(0, Math.constrain(display - 3, 0, 2), 64)
         clockFont.show()
     }
     buttonNo = 0
