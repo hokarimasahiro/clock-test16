@@ -81,7 +81,7 @@ basic.forever(function () {
         clockFont.show()
     } else {
         clockFont.setColor(clockColor)
-        clockFont.displayNumber(0, Math.constrain(display - 3, 0, 2), 64)
+        clockFont.displayNumber(0, Math.constrain(display - 3, 0, 3), 64)
         clockFont.show()
     }
     buttonNo = 0
